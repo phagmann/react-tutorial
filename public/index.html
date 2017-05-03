@@ -355,40 +355,41 @@ function AlphaBetaPruning (dataa, depth){
 
 // ###################################################################################################################################################################################################
 
+// draws line: failed to work properly
 
-function getOffset( el ) {
-    var _x = 0;
-    var _y = 0;
-    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
-        _x += el.offsetLeft - el.scrollLeft;
-        _y += el.offsetTop - el.scrollTop;
-        el = el.offsetParent;
-    }
-    return { top: _y, left: _x };
-}
+// function getOffset( el ) {
+//     var _x = 0;
+//     var _y = 0;
+//     while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+//         _x += el.offsetLeft - el.scrollLeft;
+//         _y += el.offsetTop - el.scrollTop;
+//         el = el.offsetParent;
+//     }
+//     return { top: _y, left: _x };
+// }
 
-function connect(div1, div2, color, thickness) { // draw a line connecting elements
-    var off1 = getOffset(div1);
-    var off2 = getOffset(div2);
-    // bottom right
-    var x1 = off1.left ;
-    var y1 = off1.top ;
-    // top right
-    var x2 = off2.left ;
-    var y2 = off2.top;
-    // distance
-    var length = Math.sqrt(((x2-x1) * (x2-x1)) + ((y2-y1) * (y2-y1)));
-    // center
-    var cx = ((x1 + x2) / 2) - (length / 2) - 450;
-    var cy = ((y1 + y2) / 2) - (thickness / 2) - 500;
-    // angle
-    var angle = Math.atan2((y1-y2),(x1-x2))*(180/Math.PI);
-    // make hr
-    var htmlLine = "<div style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position: absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);' />";
-    //
-    // alert(htmlLine);
-    document.body.innerHTML += htmlLine;
-}
+// function connect(div1, div2, color, thickness) { // draw a line connecting elements
+//     var off1 = getOffset(div1);
+//     var off2 = getOffset(div2);
+//     // bottom right
+//     var x1 = off1.left ;
+//     var y1 = off1.top ;
+//     // top right
+//     var x2 = off2.left ;
+//     var y2 = off2.top;
+//     // distance
+//     var length = Math.sqrt(((x2-x1) * (x2-x1)) + ((y2-y1) * (y2-y1)));
+//     // center
+//     var cx = ((x1 + x2) / 2) - (length / 2) - 450;
+//     var cy = ((y1 + y2) / 2) - (thickness / 2) - 500;
+//     // angle
+//     var angle = Math.atan2((y1-y2),(x1-x2))*(180/Math.PI);
+//     // make hr
+//     var htmlLine = "<div style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position: absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);' />";
+//     //
+//     // alert(htmlLine);
+//     document.body.innerHTML += htmlLine;
+// }
 
 function Range(min,max){
 
@@ -409,20 +410,18 @@ function press(div,track) {
 
   dataID = parseInt(div.id.substring(1));
   while(dataID <= num1*num2){
-    console.log(dataID, num1*num2)
 
     if (document.getElementById("g" + (dataID).toString()).getAttribute("class") == "col-sm-5 egg") {
-      dataID += num2
+      dataID += num2;
 
     }
     else{
-      dataID -= num2
-      console.log("yikes")
+      dataID -= num2;
       break
     }
   }
   if(dataID > num1*num2){
-    dataID -= num2
+    dataID -= num2;
   }
   div = document.getElementById("g" + (dataID).toString())
   var className = div.getAttribute("class");
@@ -456,11 +455,21 @@ function shutdown(curX,curY,row,col,num1,num2,data){
     var currentDivId = "g";
     currentDivId += i.toString(); 
     document.getElementById(currentDivId).disabled = true;
+    if(document.getElementById(currentDivId).className == "col-sm-5 egg"){
+      document.getElementById(currentDivId).className = "col-sm-5 blackegg"
+    }
 
   }
   var origin=document.getElementById("g" + ((col)*data[col].length + (row+1)).toString()); 
-  var end=document.getElementById("g" + ((curY)*data[curY].length + (curX+1)).toString()); 
-  connect(origin, end, "blue", 20)
+  var title = document.getElementsByClassName("App-intro")
+  if (origin.className == "col-sm-5 circle"){
+    title[0].innerHTML = "<p style='font-size: 50px;'> Winner! </p>"
+
+  }
+  else{
+    title[0].innerHTML = "<p style='font-size: 50px;'> Loser! </p>"
+  }
+  
   return 
 }
 function datasArray(num1,num2){

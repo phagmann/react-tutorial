@@ -45,6 +45,16 @@
     background-color: green;
 }
 
+.blackegg{
+   position: relative;
+   display:block;
+   width: 62px;
+   height: 90px;
+   background-color: black;
+   -webkit-border-radius: 63px 63px 63px 63px / 108px 108px 72px 72px;
+   border-radius:         50%  50%  50%  50%  / 60%   60%   40%  40%;
+}
+
 .cross {
     position: relative;
     border-radius: 100%;
@@ -116,14 +126,14 @@
 #gridz
 {
  position:absolute;
- left:750px; 
+ left:1050px; 
 
 }
 
 .moveleft {
 
 position: relative;
-left: 550px;
+left: 1350px;
 
 }
 
