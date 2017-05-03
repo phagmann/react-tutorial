@@ -3,19 +3,134 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  animation: App-logo-spin infinite 10s linear;
+  height: 60px;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 120px;
+  padding: 10px;
   color: white;
 }
 
 .App-intro {
-  font-size: large;
+  font-size: medium;
+}
+
+.circle {
+    position: relative;
+    border-radius: 100%;
+    background: green;
+    width: 80px;
+    height: 80px;
+    margin: 10px 10px;
+    font-size: 10px;
+    line-height: 16px;
+    
+    
+}
+.egg {
+   position: relative;
+   display:block;
+   width: 62px;
+   height: 90px;
+   background-color: white;
+   -webkit-border-radius: 63px 63px 63px 63px / 108px 108px 72px 72px;
+   border-radius:         50%  50%  50%  50%  / 60%   60%   40%  40%;
+  
+}
+
+.egg:hover {
+    background-color: green;
+}
+
+.cross {
+    position: relative;
+    border-radius: 100%;
+    background: red;
+    width: 80px;
+    height: 80px;
+    margin: 10px 10px;
+    font-size: 10px;
+    line-height: 16px;
+
+
+}
+
+.linetop
+{
+   background: black;
+   width: 500px;
+   height: 15px;
+   position: relative;
+   left: 200px;
+   bottom: 100px;
+   
+ }
+
+ .linetop:after
+
+ {
+   background: black;
+   content: "";
+   width: 500px;
+   height: 15px;
+  
+   position: absolute;
+   bottom: 160px;
+   
+ }
+
+.linebottom
+{
+   background: black;
+   width: 500px;
+   height: 15px;
+   position: relative;
+   transform:rotate(90deg);
+   bottom: 100px;
+   right: 75px;
+   
+ }
+
+ .linebottom:after
+
+ {
+   background: black;
+   content: "";
+   width: 500px;
+   height: 15px;
+  
+   position: absolute;
+   bottom: 160px;
+   
+ }
+#topleft
+{
+ position:absolute;
+ left:400px; 
+ top:300px;
+}
+
+#gridz
+{
+ position:absolute;
+ left:750px; 
+
+}
+
+.moveleft {
+
+position: relative;
+left: 550px;
+
+}
+
+.body1 {
+    -moz-transform: scale(0.6, 0.6);
+    zoom: 0.6; 
+    zoom: 50%; 
 }
 
 @keyframes App-logo-spin {
